@@ -1,11 +1,26 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: hsl(0 , 0% , 10%);
+}
 #calculator{
     font-family: Arial, sans-serif;
-    background-color: #000080;
+    background-color: #000000;
     border-radius: 20px;
     max-width: 500px;
     overflow: hidden;
 }
 #display{
+    width: 100%;
+    padding: 20px;
+    font-size:4rem;
+    text-align: left;
+    border: none;
+    background-color: hsl(0 , 0% , 18%);
+    color:bisque
     
 }
 #buttons{
@@ -27,4 +42,19 @@ button{
     font-weight: bold;
     cursor: pointer;
 
+}
+button:hover{
+    background-color: hsl(0, 0% , 50%)
+}
+button:active{
+    background-color: hsl(0, 0% , 70%)
+}
+.builtdiffrent{
+    background-color: hsl(199, 87%, 30%);
+}
+.builtdiffrent:hover{
+    background-color: hsl(199, 87%, 50%);
+}
+.builtdiffrent:active{
+    background-color: hsl(199, 87%, 70%)
 }
