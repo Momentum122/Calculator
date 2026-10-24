@@ -8,8 +8,21 @@
 </head>
 <body>
     <div id="calculator">
-        <input id="display" readonly>
+        <input id="display" readonly placeholder="0">
+        <div id="base-panel">
+            <div class="base-row"><span>HEX:</span><span id="val-hex">0</span></div>
+            <div class="base-row"><span>DEC:</span><span id="val-dec">0</span></div>
+            <div class="base-row"><span>OCT:</span><span id="val-oct">0</span></div>
+            <div class="base-row"><span>BIN:</span><span id="val-bin">0</span></div>
+        </div>
         <div id="buttons">
+            <button onclick="appendToDisplay('A')" class="hx-btn">A</button>
+            <button onclick="appendToDisplay('B')" class="hx-btn">B</button>
+            <button onclick="appendToDisplay('&')" class="bit-btn">&</button>
+            <button onclick="appendToDisplay('I')" clas="bit-btn">I</button>
+            <button onclick="appendToDisplay('C')" class="hx-btn">C</button>
+            <button onclick="appendToDisplay('D')" class="hx-btn">D</button>
+            <button onclick="appendToDisplay('^')" class="bit-btn">^</button>
             <button onclick="appendToDisplay('+')" class="builtdiffrent">+</button>
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
@@ -26,7 +39,10 @@
             <button onclick="appendToDisplay('0')">0</button>
             <button onclick="appendToDisplay('.')">.</button>
             <button onclick="calculate()" class="buil">=</button>
-            <button onclick="ClearDisplay()" class="builtdiffrent">C</button>
+            <button onclick="clearDisplay()" class="builtdiffrent">C</button>
+    
+        </div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>

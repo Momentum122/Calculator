@@ -23,6 +23,23 @@ body{
     color:bisque
     
 }
+#base-panel{
+    background-color: hsl(0 , 0%, 14%);
+    padding: 10px 20px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #00ffcc;
+    border-bottom: 1px solid #333;
+}
+.base-row{
+    display:flex;
+    justify-content: space-between;
+    margin: 3px 0;
+}
+.base-row span:first-child {
+    color: #888;
+    font-weight: bold;
+}
 #buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -57,4 +74,31 @@ button:active{
 }
 .builtdiffrent:active{
     background-color: hsl(199, 87%, 70%)
+}
+.hx-btn{
+    background-color: hsl(280 , 50% , 30%);
+}
+.hx-btn:hover{
+    background-color: hsl(280 , 50% , 50%);
+}
+.hx-btn:active{
+    background-color: hsl(280 , 50% , 70%);
+}
+.bit-btn {
+    background-color: hsl(40 , 80% , 30%);
+}
+.bit-btn:hover {
+    background-color: hsl(40 , 80% , 50%);
+}
+.bit-btn:active{
+    background: hsl(40 , 80% , 70%);
+}
+.buil{
+    background-color: hsl(120, 60%, 30%);
+}
+.buil:hover{
+    background-color: hsl(120 , 60% , 45%);
+}
+.buil:active {
+    background-color: hsl(120 , 60% , 65%);
 }
