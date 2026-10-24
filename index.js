@@ -4,6 +4,13 @@ const valDec = document.getElementById('val-dec');
 const valOct = document.getElementById('val-oct');
 const valBin = document.getElementById('val-bin');
 
+function setTheme(themeName) {
+    const calc = document.getElementById('calculator');
+    calc.className='';
+    calc.classList.add(`theme-${themeName}`);
+    localStorage.setItem('calc_theme',themeName);
+}
+
 function appendToDisplay(input) {
     display.value += input;
     updateBasePanel();

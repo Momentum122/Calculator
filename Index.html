@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="calculator">
+    <div id="calculator" class="theme-default">
+        <div id ="theme-selector">
+            <span style="font-size: 8px; color:#888; align-self: center; margin-right: auto; padding-left: 5px ; font-family: monospace;">THEME:</span>
+            <button onclick="setTheme('default')" class="theme-btn" title="Default Dark">🌙</button>
+            <button onclick="setTheme('matrix')" class="theme-btn" title="Matrix Green">💻</button>
+            <button onclick="setTheme('amber')" class="theme-btn" title="Amber CRT">⚡</button>
+            <button onclick="setTheme('synthwave')" class="theme-btn" title="Synthwave" >🌆</button>
+        </div>
         <input id="display" readonly placeholder="0">
         <div id="base-panel">
             <div class="base-row"><span>HEX:</span><span id="val-hex">0</span></div>
@@ -19,7 +26,7 @@
             <button onclick="appendToDisplay('A')" class="hx-btn">A</button>
             <button onclick="appendToDisplay('B')" class="hx-btn">B</button>
             <button onclick="appendToDisplay('&')" class="bit-btn">&</button>
-            <button onclick="appendToDisplay('|')" clas="bit-btn">|</button>
+            <button onclick="appendToDisplay('|')" class="bit-btn">|</button>
             <button onclick="appendToDisplay('C')" class="hx-btn">C</button>
             <button onclick="appendToDisplay('D')" class="hx-btn">D</button>
             <button onclick="appendToDisplay('^')" class="bit-btn">^</button>
