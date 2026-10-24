@@ -52,3 +52,26 @@ function resetReadouts() {
     valOct.textContent='0';
     valBin.textContent='0';
 }
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    if (/^[0-9a-fA-F]$/.test(key)) {
+        appendToDisplay(key.toUpperCase());
+    }
+    else if (['+','-','*','/','&','|','^'].includes(key)) {
+        appendToDisplay(key);
+    }
+    else if (key === '.'){
+        appendToDisplay('.');
+    }
+    else if (key === 'Enter' || key === '=') {
+        event.preventDefault();
+        calculate();
+    }
+    else if (key === 'Backspace') {
+        display.value = display.value.slice(0,-1);
+        updateBasePanel();
+    }
+    else if (key === 'Escape') {
+        clearDisplay();
+    }
+});
