@@ -91,7 +91,7 @@ function calculate() {
 function saveToHistory(expr , res){
     let history= JSON.parse(localStorage.getItem('calc_history')) || [];
     history.unshift ({ expr: expr , res:res})
-    if(history.length > 20)history.pop();
+    if(history.length > 30)history.pop();
     localStorage.setItem('calc_history',JSON.stringify(history));
     renderHistory();
 }

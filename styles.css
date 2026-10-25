@@ -10,10 +10,20 @@ body{
     font-family: Arial, sans-serif;
     background-color: var(--bg-calc, #000000);
     border-radius: 20px;
-    width: 460px;
+    width: 650px;
+    display : grid;
+    grid-template-columns: 440px 210px ;
+    align-items: stretch;
     overflow: hidden;
     box-shadow: var(--glow, none);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.calc-sidebar{
+    width: 210px;
+    background-color: rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction: column;
+    height: 100%    ;
 }
 #theme-selector {
     display:flex;
@@ -137,11 +147,21 @@ body{
 .base-row{
     display:flex;
     justify-content: space-between;
-    margin: 3px 0;
+    align-items: center;
+    margin: 4px 0;
+    gap: 10px;
+    overflow: scroll;
 }
 .base-row span:first-child {
     color: #888;
     font-weight: bold;
+    flex-shrink: 0;
+}
+.base-row span:first-child{
+    overflow:scroll;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
 }
 #register-panel {
     background-color: rgba(0,0,0,0.4);
@@ -210,7 +230,8 @@ body{
     height:auto;
 }
 #history-list{
-    max-height:90px;
+    flex-grow: 1;
+    max-height:none;
     overflow-y: auto;
     display : flex;
     flex-direction: column;

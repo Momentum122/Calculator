@@ -8,63 +8,67 @@
 </head>
 <body>
     <div id="calculator" class="theme-default">
-        <div id ="theme-selector">
-            <span style="font-size: 8px; color:#888; align-self: center; margin-right: auto; padding-left: 5px ; font-family: monospace;">THEME:</span>
-            <button onclick="setTheme('default')" class="theme-btn" title="Default Dark">🌙</button>
-            <button onclick="setTheme('matrix')" class="theme-btn" title="Matrix Green">💻</button>
-            <button onclick="setTheme('amber')" class="theme-btn" title="Amber CRT">⚡</button>
-            <button onclick="setTheme('synthwave')" class="theme-btn" title="Synthwave" >🌆</button>
-        </div>
-        <input id="display" readonly placeholder="0">
-        <div id="base-panel">
-            <div class="base-row"><span>HEX:</span><span id="val-hex">0</span></div>
-            <div class="base-row"><span>DEC:</span><span id="val-dec">0</span></div>
-            <div class="base-row"><span>OCT:</span><span id="val-oct">0</span></div>
-            <div class="base-row"><span>BIN:</span><span id="val-bin">0</span></div>
-        </div>
-        <div id="register-panel">
-            <div id="register-header">
-                <span> 32-BIT REGISTER(BIT 31-0)</span>
+        <div class="calc-main">
+            <div id ="theme-selector">
+                <span style="font-size: 8px; color:#888; align-self: center; margin-right: auto; padding-left: 5px ; font-family: monospace;">THEME:</span>
+                <button onclick="setTheme('default')" class="theme-btn" title="Default Dark">🌙</button>
+                <button onclick="setTheme('matrix')" class="theme-btn" title="Matrix Green">💻</button>
+                <button onclick="setTheme('amber')" class="theme-btn" title="Amber CRT">⚡</button>
+                <button onclick="setTheme('synthwave')" class="theme-btn" title="Synthwave" >🌆</button>
             </div>
-            <div id="bit-grid">
+            <input id="display" readonly placeholder="0">
+            <div id="base-panel">
+                <div class="base-row"><span>HEX:</span><span id="val-hex">0</span></div>
+                <div class="base-row"><span>DEC:</span><span id="val-dec">0</span></div>
+                <div class="base-row"><span>OCT:</span><span id="val-oct">0</span></div>
+                <div class="base-row"><span>BIN:</span><span id="val-bin">0</span></div>
+            </div>
+            <div id="register-panel">
+                <div id="register-header">
+                    <span> 32-BIT REGISTER(BIT 31-0)</span>
+                </div>
+                <div id="bit-grid">
+                </div>
+            </div>
+            <div id="buttons">
+                <button onclick="appendToDisplay('A')" class="hx-btn">A</button>
+                <button onclick="appendToDisplay('B')" class="hx-btn">B</button>
+                <button onclick="appendToDisplay('&')" class="bit-btn">&</button>
+                <button onclick="appendToDisplay('|')" class="bit-btn">|</button>
+                <button onclick="appendToDisplay('C')" class="hx-btn">C</button>
+                <button onclick="appendToDisplay('D')" class="hx-btn">D</button>
+                <button onclick="appendToDisplay('^')" class="bit-btn">^</button>
+                <button onclick="appendToDisplay('+')" class="builtdiffrent">+</button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendToDisplay('-')" class="builtdiffrent">-</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendToDisplay('*')" class="builtdiffrent">*</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="appendToDisplay('/')" class="builtdiffrent">/</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <button onclick="calculate()" class="buil">=</button>
+                <button onclick="clearDisplay()" class="builtdiffrent">C</button>
             </div>
         </div>
-        <div id="history-panel">
-            <div id ="history-header">
-                <span> HISTORY </span>
-                <button onclick="clearHistory()" id="clear-History-btn" title="Clear History">🗑️</button>
-            </div>
-            <div id="history-list">
+        <div class="calc-sidebar">
+            <div id="history-panel">
+                <div id="history-header">
+                    <span> HISTORY </span>
+                    <button onclick="clearHistory()" id="clear-history-btn" title="Clear History">🗑️</button>
+                </div>
+                <div id="history-list">
 
+                </div>
             </div>
         </div>
-        <div id="buttons">
-            <button onclick="appendToDisplay('A')" class="hx-btn">A</button>
-            <button onclick="appendToDisplay('B')" class="hx-btn">B</button>
-            <button onclick="appendToDisplay('&')" class="bit-btn">&</button>
-            <button onclick="appendToDisplay('|')" class="bit-btn">|</button>
-            <button onclick="appendToDisplay('C')" class="hx-btn">C</button>
-            <button onclick="appendToDisplay('D')" class="hx-btn">D</button>
-            <button onclick="appendToDisplay('^')" class="bit-btn">^</button>
-            <button onclick="appendToDisplay('+')" class="builtdiffrent">+</button>
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('-')" class="builtdiffrent">-</button>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('*')" class="builtdiffrent">*</button>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('/')" class="builtdiffrent">/</button>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="calculate()" class="buil">=</button>
-            <button onclick="clearDisplay()" class="builtdiffrent">C</button>
-    
-        </div>
+
     </div>
     <script src="index.js"></script>
 </body>
