@@ -3,6 +3,7 @@ const valHex = document.getElementById('val-hex');
 const valDec = document.getElementById('val-dec');
 const valOct = document.getElementById('val-oct');
 const valBin = document.getElementById('val-bin');
+const historyList = document.getElementById('history-list');
 
 function setTheme(themeName) {
     const calc = document.getElementById('calculator');
@@ -10,6 +11,12 @@ function setTheme(themeName) {
     calc.classList.add(`theme-${themeName}`);
     localStorage.setItem('calc_theme',themeName);
 }
+window.addEventListener(`DOMContentLoaded`, () => {
+    const savedTheme = localStorage.getItem(`calc_theme`) || 'default';
+    setTheme(savedTheme);
+    loadHistory();
+});
+
 
 function appendToDisplay(input) {
     display.value += input;
@@ -23,14 +30,50 @@ function clearDisplay() {
 }
  
 function calculate() {
-    try {
-        let result= eval(display.value);
+    try{
+        let expression = display.value;
+        let result = eval(expression);
+        if (result !== undefined && !isNaN(result) && isFinite(result)) {
+            saveToHistory(expression,result);
+        }
         display.value = result;
         updateBasePanel();
     }
-    catch(error)   {
-        display.value = 'Error';
+    catch(error){
+        display.value = "Error";
     }
+}
+function saveToHistory(expr , res){
+    let history= JSON.parse(localStorage.getItem('calc_history')) || [];
+    history.unshift ({ expr: expr , res:res})
+    if(history.length > 20)history.pop();
+    localStorage.setItem('calc_history',JSON.stringify(history));
+    renderHistory();
+}
+function loadHistory(){
+    renderHistory();
+}
+function renderHistory(){
+    let history = JSON.parse(localStorage.getItem('calc_history')) || [];
+    historyList.innerHTML = '';
+    if (history.length === 0) {
+        historyList.innerHTML = '<div style= "font-size:11px; color: #555; text-align: center; padding: 4px;">No calculations yet</div>';
+        return;
+    }
+    history.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `<span>${item.expr}</span> <strong>=${item.res}</strong>`;
+        div.onclick = () => {
+            display.value = item.res;
+            updateBasePanel();
+        };
+        historyList.appendChild(div);
+    });
+}
+function clearHistory(){
+    localStorage.removeItem('calc_history');
+    renderHistory();
 }
 function updateBasePanel() {
     try {
