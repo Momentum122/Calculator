@@ -311,3 +311,36 @@ body{
 #buttons button.buil:active {
     background-color: hsl(120 , 60% , 65%);
 }
+#inspector-panel {
+    background-color: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    font-family: monospace;
+}
+#inspector-header{
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+#inspector-content{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.byte-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #ccc;
+    background: rgba(255, 255 ,255, 0.03);
+    padding: 3px 6px;
+    border-radius: 3px;
+}
+.byte-row span:first-child{
+    color: #888;
+    font-weight: bold;
+}
+.byte-row span:last-child{
+    color: var(--text-panel,#00ffcc)
+}

@@ -138,6 +138,7 @@ function updateBasePanel() {
         valBin.textContent=intVal.toString(2);
         valOct.textContent=intVal.toString(8);
         updateBitGrid(intVal);
+        updateByteInspector(intVal);
     } catch(e) {
 
     }
@@ -172,3 +173,21 @@ document.addEventListener('keydown', (event) => {
         clearDisplay();
     }
 });
+function updateByteInspector(decimalValue){
+    let int32 = parseInt(decimalValue) || 0;
+    let bytes = [
+        (int32 >>> 24) & 0xFF,
+        (int32 >>> 16) & 0xFF,
+        (int32 >>> 8) & 0xFF,
+        int32 & 0xFF
+    ];
+    for(let i = 0; i<4;i++){
+        let b = bytes[3 - i]
+        let hex = b.toString(16).toUpperCase().padStart(2,'0');
+        let asciiChar = (b >= 32 && b <= 126) ? String.fromCharCode(b):'.';
+        let span = document.getElementById(`byte-${3-i}`);
+        if (span) {
+            span.textContent= `0x${hex} (${b}) [${asciiChar}]`;
+        }
+    }
+}
