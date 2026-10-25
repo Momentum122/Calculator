@@ -4,6 +4,7 @@ const valDec = document.getElementById('val-dec');
 const valOct = document.getElementById('val-oct');
 const valBin = document.getElementById('val-bin');
 const historyList = document.getElementById('history-list');
+const bitGrid = document.getElementById('bit-grid');
 
 function setTheme(themeName) {
     const calc = document.getElementById('calculator');
@@ -14,8 +15,52 @@ function setTheme(themeName) {
 window.addEventListener(`DOMContentLoaded`, () => {
     const savedTheme = localStorage.getItem(`calc_theme`) || 'default';
     setTheme(savedTheme);
+    initBitGrid();
     loadHistory();
 });
+function initBitGrid(){
+    bitGrid.innerHTML = '';
+    for(let i = 31 ; i >= 0 ; i--) {
+        const bitBox = document.createElement('div');
+        bitBox.className = 'bit-box';
+        bitBox.dataset.bit = i;
+        bitBox.textContent = '0';
+        bitBox.onclick = () => {
+            toggleBit(i);
+        };
+        bitGrid.appendChild(bitBox);
+    }
+}
+function toggleBit(bitIndex) {
+    try{
+        let currentVal= display.value.trim();
+        let num = currentVal ? Number(eval(currentVal)) : 0 ;
+        if (isNaN(num) || !isFinite(num)) { num = 0; }
+        let intVal = Math.trunc(num) >>> 0;
+        intVal ^= (1<<bitIndex);
+        display.value = intVal.toString();
+        updateBasePanel();
+    } catch(e){
+        display.value = (1<<bitIndex).toString();
+        updateBasePanel();
+    }
+}
+function updateBitGrid(numericValue) {
+    let unsignedVal = Math.trunc(numericValue) >>> 0;
+    const boxes = bitGrid.querySelectorAll('.bit-box');
+    boxes.forEach(box => {
+        let bitIndex = parseInt(box.dataset.bit);
+        let isSet = (unsignedVal &(1 <<bitIndex)) !== 0 ;
+        if (isSet){
+            box.classList.add('active');
+            box.textContent= '1';
+        } 
+         else {
+            box.classList.remove('active');
+            box.textContent='0';
+         }
+    });
+}
 
 
 function appendToDisplay(input) {
@@ -92,6 +137,7 @@ function updateBasePanel() {
         valDec.textContent=intVal.toString(10);
         valBin.textContent=intVal.toString(2);
         valOct.textContent=intVal.toString(8);
+        updateBitGrid(intVal);
     } catch(e) {
 
     }
@@ -101,6 +147,7 @@ function resetReadouts() {
     valDec.textContent='0';
     valOct.textContent='0';
     valBin.textContent='0';
+    updateBitGrid(0);
 }
 document.addEventListener('keydown', (event) => {
     const key = event.key;

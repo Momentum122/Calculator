@@ -10,7 +10,7 @@ body{
     font-family: Arial, sans-serif;
     background-color: var(--bg-calc, #000000);
     border-radius: 20px;
-    max-width: 500px;
+    width: 460px;
     overflow: hidden;
     box-shadow: var(--glow, none);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -143,6 +143,48 @@ body{
     color: #888;
     font-weight: bold;
 }
+#register-panel {
+    background-color: rgba(0,0,0,0.4);
+    border-bottom: 1px solid #333;
+    padding: 8px 20px;
+    font-family: monospace;
+}
+#register-header{
+    font-size: 10px;
+    color:#888;
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+#bit-grid {
+    display:grid;
+    grid-template-columns: repeat(16,1fr);
+    gap:3px;
+}
+.bit-box{
+    background: rgba(255,255,255,0.08);
+    border : 1px solid rgba(255, 255 ,255, 0.3);
+    border-radius: 2px;
+    text-align: center;
+    font-size:8px;
+    color: #aaa;
+    cursor: pointer;
+    padding: 2px 0;
+    transition: all 0.1s;
+    user-select: none;
+}
+.bit-box:hover{
+    border-color: var(--text-panel,#00ffcc);
+    color: #fff;
+}
+.bit-box:active {
+    background: var(--text-panel, #00ffcc);
+    color: #000;
+    border-color: var(--text-panel,#00ffcc);
+    font-weight: bold;
+    box-shadow: 0 0 8px var(--text-panel, #00ffcc);
+}
 #history-panel{
     background-color: rgba(0,0,0,0.3);
     border-bottom: 1px solid #333;
@@ -189,21 +231,27 @@ body{
     background: rgba(255,255,255,0.1);
     color:#fff;
 }
+#buttons {
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
 #buttons button {
-    width :100px ;
-    height : 100px ;
+    width :100% ;
+    height : 85px ;
     border-radius: 20%;
     border : 2px solid black;
     background-color: hsl(0, 0% , 30%);
     color : aliceblue;
-    font-size:30px ;
+    font-size:24px ;
     font-weight :bold ; 
     cursor:pointer;
 }
-button:hover{
+#buttons button:hover{
     background-color: hsl(0, 0% , 50%)
 }
-button:active{
+#buttons button:active{
     background-color: hsl(0, 0% , 70%)
 }
 #buttons button.builtdiffrent{
@@ -212,8 +260,8 @@ button:active{
 #buttons button.builtdiffrent:hover{
     background-color: hsl(199, 87%, 50%);
 }
-#butttons button.builtdiffrent:active{
-    background-color: hsl(199, 87%, 70%)
+#buttons button.builtdiffrent:active{
+    background-color: hsl(199, 87%, 70%);
 }
 #buttons button.hx-btn{
     background-color: hsl(280 , 50% , 30%);
