@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MK-32 // Programmer Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="calculator" class="theme-default">
         <div class="calc-main">
-            <div id ="theme-selector">
-                <span style="font-size: 8px; color:#888; align-self: center; margin-right: auto; padding-left: 5px ; font-family: monospace;">THEME:</span>
-                <button onclick="setTheme('default')" class="theme-btn" title="Default Dark">🌙</button>
-                <button onclick="setTheme('matrix')" class="theme-btn" title="Matrix Green">💻</button>
-                <button onclick="setTheme('amber')" class="theme-btn" title="Amber CRT">⚡</button>
-                <button onclick="setTheme('synthwave')" class="theme-btn" title="Synthwave" >🌆</button>
+            <div id="theme-selector">
+                <span class="calc-brand">MK-32 // PROG</span>>
+                <button onclick="setTheme('default')" class="theme-btn" title="Graphite Dark">STD</button>
+                <button onclick="setTheme('matrix')" class="theme-btn" title="Solder Mask PCB">PCB</button>
+                <button onclick="setTheme('amber')" class="theme-btn" title="Amber CRT">CRT</button>
+                <button onclick="setTheme('synthwave')" class="theme-btn" title="Cyber Deck">DECK</button>
             </div>
             <input id="display" readonly placeholder="0">
             <div id="base-panel">
@@ -25,7 +28,8 @@
             </div>
             <div id="register-panel">
                 <div id="register-header">
-                    <span> 32-BIT REGISTER(BIT 31-0)</span>
+                    <span>32-BIT REGISTER (BIT 31–0)</span>
+                    <span class="register-hint">[CLICK BIT TO TOGGLE]</span>
                 </div>
                 <div id="bit-grid">
                 </div>
@@ -33,11 +37,15 @@
             <div id="buttons">
                 <button onclick="appendToDisplay('A')" class="hx-btn">A</button>
                 <button onclick="appendToDisplay('B')" class="hx-btn">B</button>
-                <button onclick="appendToDisplay('&')" class="bit-btn">&</button>
-                <button onclick="appendToDisplay('|')" class="bit-btn">|</button>
                 <button onclick="appendToDisplay('C')" class="hx-btn">C</button>
                 <button onclick="appendToDisplay('D')" class="hx-btn">D</button>
+                <button onclick="appendToDisplay('E')" class="hx-btn">E</button>
+                <button onclick="appendToDisplay('F')" class="hx-btn">F</button>
+                <button onclick="appendToDisplay('&')" class="bit-btn">&amp;</button>
+                <button onclick="appendToDisplay('|')" class="bit-btn">|</button>
                 <button onclick="appendToDisplay('^')" class="bit-btn">^</button>
+                <button onclick="appendToDisplay('<<')" class="bit-btn">&lt;&lt;</button>
+                <button onclick="appendToDisplay('>>')" class="bit-btn">&gt;&gt;</button>
                 <button onclick="appendToDisplay('+')" class="builtdiffrent">+</button>
                 <button onclick="appendToDisplay('7')">7</button>
                 <button onclick="appendToDisplay('8')">8</button>
@@ -54,26 +62,26 @@
                 <button onclick="appendToDisplay('0')">0</button>
                 <button onclick="appendToDisplay('.')">.</button>
                 <button onclick="calculate()" class="buil">=</button>
-                <button onclick="clearDisplay()" class="builtdiffrent">C</button>
+                <button onclick="clearDisplay()" class="builtdiffrent">CLR</button>
             </div>
         </div>
+
         <div class="calc-sidebar">
             <div id="history-panel">
                 <div id="history-header">
-                    <span> HISTORY </span>
-                    <button onclick="clearHistory()" id="clear-history-btn" title="Clear History">🗑️</button>
+                    <span>HISTORY</span>
+                    <button onclick="clearHistory()" id="clear-history-btn" title="Clear History">CLR</button>
                 </div>
                 <div id="history-list">
-
                 </div>
             </div>
             <div id="inspector-panel">
                 <div id="inspector-header">
-                    <span> BYTE INSPECTOR </span>
+                    <span>BYTE INSPECTOR</span>
                 </div>
                 <div id="inspector-content">
                     <div class="byte-row">
-                        <span> B3 (MSB):</span><span id="byte-3">0x00 (0) [.]</span>
+                        <span>B3 (MSB):</span><span id="byte-3">0x00 (0) [.]</span>
                     </div>
                     <div class="byte-row">
                         <span>B2:</span><span id="byte-2">0x00 (0) [.]</span>
@@ -82,12 +90,11 @@
                         <span>B1:</span><span id="byte-1">0x00 (0) [.]</span>
                     </div>
                     <div class="byte-row">
-                        <span>B0 (LSB) </span><span id="byte-0">0x00 (0) [.]</span>
+                        <span>B0 (LSB):</span><span id="byte-0">0x00 (0) [.]</span>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <script src="index.js"></script>
 </body>
